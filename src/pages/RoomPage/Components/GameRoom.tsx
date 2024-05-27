@@ -30,7 +30,7 @@ export const GameRoom: React.FC<Props> = observer(({ players, history, rank, dia
   useKeyboardActions();
 
   return (
-    <div className="bg-white w-full h-full flex flex-col justify-center jersey px-24">
+    <div className="bg-white w-full h-full flex flex-col justify-center jersey px-8">
 
       <div className='w-full flex justify-between items-center h-full my-6 gap-6'>
 

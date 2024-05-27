@@ -53,7 +53,7 @@ export const Room: React.FC = () =>
 
   // Create socket.io in this level, so that it can be used in both GameRoom and Lobby.
   useEffect(() => {
-    const socket = io('https://pet-man-server.vercel.app:3001');   // ! the game server is running on another port.
+    const socket = io('https://pet-man-server.vercel.app');   // ! the game server is running on another port.
     store.socket = socket;                        // store the socket for later use
     store.soundEffect = soundEffect;              // store the soundRef for later use
 

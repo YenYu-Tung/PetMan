@@ -40,7 +40,7 @@ export const Lobby: React.FC<Props> = observer(({ players, userName, selectedPet
   };
 
   return (
-    <div className="bg-white w-full h-full flex flex-col justify-center jersey px-24">
+    <div className="bg-white w-full h-full flex flex-col justify-center jersey px-8">
 
 
       <div className='w-full flex justify-between items-center h-full my-6 gap-6'>
@@ -79,7 +79,7 @@ export const Lobby: React.FC<Props> = observer(({ players, userName, selectedPet
                   key={index}
                   src={pet.src}
                   alt={pet.alt}
-                  className={`w-40 ${selectedPet === pet.name ? 'w-44 border-focus' : ''}`}
+                  className={`w-38 ${selectedPet === pet.name ? 'w-40 border-focus' : ''}`}
                   onClick={() => handleSelectPet(pet.name)}
                 />
               ))}
