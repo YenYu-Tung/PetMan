@@ -24,7 +24,7 @@ export const GamePage: React.FC = observer(() => {
 
   useEffect(() => {
     // ! the game server is running on another port.
-    const socket = io('http://localhost:3001');
+    const socket = io('https://pet-man-server.vercel.app');
 
     // the client sends his or her name to the server
     socket.emit('players', { 'name': (Math.random() + 1).toString(36).substring(7) });
