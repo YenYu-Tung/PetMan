@@ -1,0 +1,85 @@
+{
+  "name": "pacman",
+  "version": "0.1.0",
+  "private": true,
+  "license": "private",
+  "dependencies": {
+    "@babel/plugin-syntax-flow": "^7.24.1",
+    "@babel/plugin-transform-react-jsx": "^7.23.4",
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@mui/icons-material": "^5.15.17",
+    "@mui/material": "^5.15.17",
+    "@testing-library/dom": "^10.1.0",
+    "@testing-library/jest-dom": "^5.11.9",
+    "@testing-library/react": "^11.2.3",
+    "@testing-library/user-event": "^12.6.2",
+    "@types/classnames": "^2.2.9",
+    "@types/lodash": "^4.14.149",
+    "@types/node": "^12.0.0",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "@types/react-router-dom": "^5.1.7",
+    "@typescript-eslint/eslint-plugin": "^7.9.0",
+    "@typescript-eslint/type-utils": "^7.9.0",
+    "@typescript-eslint/utils": "^7.9.0",
+    "antd": "^5.17.0",
+    "assert": "^2.1.0",
+    "autoprefixer": "^10.4.19",
+    "babel-plugin-macros": "^3.1.0",
+    "classnames": "^2.2.6",
+    "lodash": "^4.17.15",
+    "memfs": "^4.9.2",
+    "mobx": "^5.15.1",
+    "mobx-react-lite": "2.0.6",
+    "postcss": "^8.4.38",
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0",
+    "react-howler": "^5.2.0",
+    "react-is": ">=16.8.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "^5.0.1",
+    "socket.io-client": "^4.7.5",
+    "styled-components": "^5.2.1",
+    "tailwindcss": "^3.4.3",
+    "typescript": "^5.4.5",
+    "xstate": "^4.7.5"
+  },
+  "scripts": {
+    "compile": "tsc --noEmit",
+    "compile:watch": "tsc --noEmit --watch",
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-scripts test",
+    "test:ci": "CI=true react-scripts test",
+    "eject": "react-scripts eject",
+    "prettier": "prettier --write **/*.{ts,tsx,md,json,js,sx}",
+    "lint": "eslint 'src/**/*.{ts,tsx}'",
+    "netlify-build": "tsc --noEmit && yarn lint && yarn test:ci && yarn build"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.24.5",
+    "@types/styled-components": "^5.0.1",
+    "@typescript-eslint/parser": "^7.9.0",
+    "customize-cra": "^1.0.0",
+    "eslint": "^8.0.0",
+    "husky": "^3.1.0",
+    "prettier": "^1.19.1",
+    "react-app-rewired": "^2.2.1"
+  }
+}
