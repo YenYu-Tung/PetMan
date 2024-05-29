@@ -30,7 +30,7 @@ interface PacManViewProps {
 }
 
 export const PacManView: FC<PacManViewProps> = observer(({ selectedPet }) => {
-  console.log(selectedPet)
+  // console.log(selectedPet)
   const store = useStore();
   const game = useGame();
   const pacMan = game.pacMan;

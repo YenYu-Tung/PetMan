@@ -4,17 +4,18 @@ import DialogContent from '@mui/material/DialogContent';
 import IconButton from '@mui/material/IconButton';
 import { observer } from 'mobx-react-lite';
 import * as React from 'react';
+import { useStore } from './StoreContext';
 
 type Props = {
   rank: number;
   dialogOpen: boolean;
   setDialog: (open: boolean) => void;
   userName: string;
+  selectedPet: string | null;
 };
 
 
-export const Modal: React.FC<Props> = observer(({ rank, dialogOpen, setDialog, userName }) =>
-{
+export const Modal: React.FC<Props> = observer(({ rank, dialogOpen, setDialog, userName, selectedPet }) => {
   const handleClose = (reason: any) => {
     if (reason === "backdropClick" || reason === "escapeKeyDown")
       return;
@@ -25,17 +26,23 @@ export const Modal: React.FC<Props> = observer(({ rank, dialogOpen, setDialog, u
 
   return (
     <React.Fragment>
-      <button className="shadow hover:bg-green focus:outline-none text-black text-5xl font-bold py-2 w-full rounded-3xl border-8 border-dark-green"
-              type="button"
-              onClick={() => setDialog(true)}
+      <button className="shadow hover:bg-green focus:outline-none text-black text-3xl font-bold py-1 w-full rounded-xl border-4 border-dark-green"
+        type="button"
+        onClick={() => {
+          setDialog(true);
+          setTimeout(() => {
+            setDialog(false);
+            window.location.href = `/room?name=${userName}`;
+          }, 3000);
+        }}
       >
-        QUIT
+        LEAVE GAME
       </button>
       <Dialog
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"
         open={dialogOpen}
-        maxWidth="lg"
+        maxWidth="md"
         fullWidth={true}
         sx={{
           '& .MuiDialogContent-root': {
@@ -64,17 +71,21 @@ export const Modal: React.FC<Props> = observer(({ rank, dialogOpen, setDialog, u
           }} />
         </IconButton>
         <DialogContent dividers>
-          <div className='w-full px-8 py-24 flex justify-center items-center gap-8'>
-            <img src="/JN.PNG" alt="" className='w-56' />
-            <div className="flex flex-col justify-start gap-4 p-2 jersey">
-              <span className="text-black text-8xl font-semibold" >
-                {userName}
-              </span>
-              <span className="text-black text-8xl font-semibold" >
-                Rank: {rank}
-              </span>
-            </div>
+          <div className='w-full px-8 py-20 flex flex-col justify-center items-center gap-2'>
+            <div className='w-full flex justify-center items-center gap-8'>
+              <img src={`/${selectedPet}.PNG`} alt="" className='w-56' />
+              <div className="flex flex-col justify-start gap-4 p-2 jersey truncate">
+                <span className="text-black text-8xl font-semibold truncate mb-6" >
+                  {userName}
+                </span>
+                {rank === 1 && <span className="text-6xl text-red font-semibold">You Win !</span>}
+                <span className="text-black text-6xl font-semibold" >
+                  Rank:
+                  <span className='text-red ml-6'>{rank === -1 ? '🤡' : rank}</span>
 
+                </span>
+              </div>
+            </div>
           </div>
         </DialogContent>
         {/* <DialogActions>

@@ -45,11 +45,11 @@ export const GhostsView: FC<{
     ghostViewOptions = DefaultGhostViewOptions,
     gameViewOptions = DefaultGameViewOptions,
   }) => {
-    const store = useGame();
+    const game = useGame();
 
     return (
       <>
-        {store.ghosts.map(ghost => (
+        {game.ghosts.map(ghost => (
           <GhostCompositeView
             key={ghost.ghostNumber}
             ghost={ghost}
@@ -152,7 +152,7 @@ export const GhostSprite: FC<GhostSpriteProps> = ({
 }) => (
   <Sprite
     className="Sprite-ghost"
-    name={`ghost-${ghostNumber}-direction-${direction}-phase-${phase}`}
+    name={`ghost-${ghostNumber % 4}-direction-${direction}-phase-${phase}`}
     x={x}
     y={y}
     style={style}

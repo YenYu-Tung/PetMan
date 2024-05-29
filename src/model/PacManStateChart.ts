@@ -48,6 +48,7 @@ const PacManStateChart = Machine<PacManContext, PacManStateSchema, PacManEvent>(
       chasing: {
         entry: 'onChasing',
         on: {
+          ENERGIZER_EATEN: 'chasing',
           ENERGIZER_TIMED_OUT: 'eating',
         },
       },

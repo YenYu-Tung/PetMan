@@ -76,6 +76,9 @@ const eatPillLayerObject = (tile: TileCoordinates, game: Game) => {
       eatPill(tile, game);
       break;
     case ENERGIZER_ID:
+      game.store.soundEat?.('/track/eat.mp3');
+      // console.debug('Eating energizer', tile.y, tile.x);
+      // (23, 1), (23, 26), (3, 1), (3, 26)
       eatEnergizer(game);
       break;
     default:
@@ -88,7 +91,6 @@ const eatPillLayerObject = (tile: TileCoordinates, game: Game) => {
 
 const eatPill = (tile: TileCoordinates, game: Game) => {
   game.score += BASIC_PILL_POINTS;
-  game.store.soundEffect?.('/track/eat.wav');
 };
 
 const detectGhostCollisions = (game: Game) => {

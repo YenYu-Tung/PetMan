@@ -4,8 +4,6 @@ import { SCALE_FACTOR } from '../model/Coordinates';
 import './Sprite.css';
 import dead from './images/death_circle.png';
 
-const scale = `scale(${SCALE_FACTOR})`;
-
 const otherImages = [
   { src: "./images/JN.png", alt: "JN", name: "JN" },
   { src: "./images/CL.png", alt: "CL", name: "CL" },
@@ -38,7 +36,13 @@ export const Sprite: FC<{
   let backgroundImage;
   if (isPacman || isDeadPacman) {
     if (selectedPet) backgroundImage = `url(/${selectedPet}.PNG)`;
-  } 
+  }
+
+  const appliedScale = isDeadPacman
+    ? 1.3 * SCALE_FACTOR
+    : isPacman
+      ? 1.06 * SCALE_FACTOR
+      : SCALE_FACTOR;
 
   return (
     <div
@@ -53,11 +57,10 @@ export const Sprite: FC<{
         position: 'absolute',
         left: `${x}px`,
         top: `${y}px`,
-        transform: isDeadPacman ? `scale(${1.5 * SCALE_FACTOR})` : scale,
+        transform: `scale(${appliedScale})`,
         transformOrigin: 'top left',
         ...(backgroundImage ? { backgroundImage, backgroundSize: 'cover' } : {}),
       }}
     />
   );
 };
-

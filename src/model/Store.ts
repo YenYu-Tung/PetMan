@@ -8,8 +8,12 @@ export class Store {
   game: Game = new Game(this);
 
   socket? : Socket | null = null;
+  srcKiller : string | null = null;
   debugState = new DebugState(this);
-  soundEffect : ((filepath: string) => void) | null = null;
+  soundEat : ((filepath: string) => void) | null = null;
+  soundRevive : ((filepath: string) => void) | null = null;
+  soundGameOver : ((filepath: string) => void) | null = null;
+  setPlaying : ((playing: boolean) => void) | null = null;
 
   @action.bound
   resetGame() {

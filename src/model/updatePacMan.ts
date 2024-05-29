@@ -59,7 +59,6 @@ const revivePacMan = (pacMan: PacMan) => {
   if (pacMan.extraLivesLeft > 0) {
     pacMan.extraLivesLeft -= 1;
     pacMan.game.revivePacMan();
-  } else {
-    pacMan.game.store.socket?.emit('dead');
+    pacMan.game.store.srcKiller = null;
   }
 };

@@ -41,7 +41,7 @@ const chooseInScatterMode = (ghost: Ghost): TileCoordinates => {
   if (ghost.isInsideBoxWalls) {
     return TILE_FOR_LEAVING_THE_BOX;
   }
-  switch (ghost.ghostNumber) {
+  switch (ghost.ghostNumber % 4) {
     case 0:
       return SCATTER_TILE_FOR_GHOST_0;
     case 1:
@@ -111,7 +111,7 @@ const choseInChaseMode = (ghost: Ghost): TileCoordinates => {
   if (ghost.isInsideBoxWalls) {
     return TILE_FOR_LEAVING_THE_BOX;
   }
-  switch (ghost.ghostNumber) {
+  switch (ghost.ghostNumber % 4) {
     case 0:
       return chooseForGhost0InChaseState(ghost);
     case 1:
@@ -143,9 +143,9 @@ const chooseSomeRandomMovement = (ghost: Ghost): TileCoordinates => {
       direction !== ghost.direction &&
       isWayFreeInDirection(ghost.tileCoordinates, direction)
   );
-  assert(candidateDirections.length > 0);
-  const newDirection =
-    candidateDirections[getRandomInt(candidateDirections.length)];
+  // assert(candidateDirections.length > 0, ghost.ghostNumber.toString());
+  const newDirection = candidateDirections.length ?
+    candidateDirections[getRandomInt(candidateDirections.length)] : ghost.direction;
   assert(newDirection);
   const randomNeighourTile = getNextTile(ghost.tileCoordinates, newDirection);
 

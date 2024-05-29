@@ -22,9 +22,9 @@ export const useKeyboardActions = (): void => {
       case 'ArrowDown':
         pacMan.nextDirection = 'DOWN';
         break;
-      case ' ':
-        game.gamePaused = !game.gamePaused;
-        break;
+      // case ' ':
+      //   game.gamePaused = !game.gamePaused;
+      //   break;
       default:
         break;
     }

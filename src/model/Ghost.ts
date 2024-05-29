@@ -23,7 +23,7 @@ import { StateValue } from 'xstate';
 import { TimeoutTimer } from './TimeoutTimer';
 import { getStatePhaseLength } from './updateGhostStatePhase';
 
-export type GhostNumber = 0 | 1 | 2 | 3;
+export type GhostNumber = number;
 export const GhostNumbers: GhostNumber[] = [0, 1, 2, 3];
 export type GhostAnimationPhase = 0 | 1;
 export const GhostAnimationPhases: GhostAnimationPhase[] = [0, 1];
@@ -65,6 +65,8 @@ export class Ghost {
     this.game.killedGhosts++;
     this.game.score += KILL_GHOST_SCORE[this.game.killedGhosts];
     this.deadWaitingTimeInBoxLeft = DEAD_WAITING_IN_BOX_DURATION;
+
+    this.game.store.socket?.emit('attack');
   }
 
   @action.bound
@@ -145,7 +147,7 @@ export class Ghost {
 
   @computed
   get animationPhase(): GhostAnimationPhase {
-    return Math.round((this.game.timestamp + this.ghostNumber * 100) / 300) %
+    return Math.round((this.game.timestamp + (this.ghostNumber % 4) * 100) / 300) %
       2 ===
       0
       ? 0
