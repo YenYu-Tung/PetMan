@@ -1,5 +1,4 @@
-## Development
-
+# Multiplayer PacMan Game - Pet Man
 ## Credit
 https://github.com/stefanwille/pacman-react
 
